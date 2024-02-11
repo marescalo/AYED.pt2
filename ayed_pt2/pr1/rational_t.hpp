@@ -45,10 +45,10 @@ public: // Elementos publicos
   bool is_less(const rational_t&, const double precision = EPSILON) const; //método para ver si es menor
   
   // FASE III
-  // rational_t add(const rational_t&);
-  // rational_t substract(const rational_t&);
-  // rational_t multiply(const rational_t&);
-  // rational_t divide(const rational_t&);
+  rational_t add(const rational_t&);
+  rational_t substract(const rational_t&);
+  rational_t multiply(const rational_t&);
+  rational_t divide(const rational_t&);
   
   void write(ostream& = cout) const; //lectura desde teclado  //ostream y cout llevan std::
   void read(istream& = cin); //scritura a pantalla  // istream y cin llevan std::

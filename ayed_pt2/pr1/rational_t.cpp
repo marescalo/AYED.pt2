@@ -63,51 +63,71 @@ rational_t::value() const //metodo que devuelve el valor real de una fraccion
 
 // comparaciones
 bool
-rational_t::is_equal(const rational_t& r, const double precision) const
+rational_t::is_equal(const rational_t& r, const double precision) const //metodo que mira si son iguales
 { 
+  if(fabs(value()-r.value())<precision){
+    return true;
+  }
+  else {return false;}
 }
 
 
 
 bool
-rational_t::is_greater(const rational_t& r, const double precision) const
+rational_t::is_greater(const rational_t& r, const double precision) const // metodo que compara si x es mayor que y
 {
+  if((value()-r.value())>precision){
+    return true;
+  }
+  else{return false;}
 }
 
 
 
 bool
-rational_t::is_less(const rational_t& r, const double precision) const
+rational_t::is_less(const rational_t& r, const double precision) const // metodo que compara si y es mayor que x
 {
+  if(r.value()-value()>precision){
+    return true;
+  }
+  else {return false;}
 }
 
 
 // operaciones
-//rational_t
-//rational_t::add(const rational_t& r)
-//{
-//}
+rational_t
+rational_t::add(const rational_t& r) // este método realiza la suma entre el valor a y b
+{
+  rational_t solve{((get_num() * r.get_den())+(r.get_num() * get_den())) , (get_den() * r.get_den())};
+  return solve;
+}
 
 
 
-//rational_t
-//rational_t::substract(const rational_t& r)
-//{
-//}
+rational_t
+rational_t::substract(const rational_t& r) //metodo que realiza la resta entre a y b
+{
+  rational_t solve {((r.get_num() * get_den())-(get_num() * r.get_den())) , (get_den() * r.get_den())};
+  return solve; 
+}
 
 
 
-//rational_t
-//rational_t::multiply(const rational_t& r)
-//{
-//}
+rational_t
+rational_t::multiply(const rational_t& r) //metodo que realiza la multiplicacion entre a y b
+{
+  rational_t solve {(get_num() * r.get_num()) , (get_den() * r.get_den())};
+  return solve;  
+}
 
 
 
-//rational_t
-//rational_t::divide(const rational_t& r)
-//{
-//}
+rational_t
+rational_t::divide(const rational_t& r) // método que realiza la division entre a y b
+{
+  rational_t solve {(get_num() * r.get_den()) , (get_den() * r.get_num())};
+  return solve;
+}
 
 
 
