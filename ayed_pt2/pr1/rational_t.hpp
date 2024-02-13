@@ -8,7 +8,7 @@
 //              "C++ Programming Style Guidelines"
 //              https://geosoft.no/development/cppstyle.html
 
-// pauta de estilo [92]: comentarios multilínea usando solo "//"
+// Comments style : ambos tipos de comentarios son validos, tanto "/* */" como "//".
 
 #pragma once
 
@@ -16,28 +16,30 @@
 #include <cassert>
 #include <cmath>
 
-// pauta de estilo [5]
+// Constant Names: empiezan por una "k" y el nombre que le queramos dar poniendomla primera letra de cada palabra en mayúscula.
 # define EPSILON 1e-6
 
 using namespace std;
 
 class rational_t
 {
-  // pautas de estilos [44] y [73]: primero "public" y después "private"
+    // Order Declaration: primero public, luego protected y por último private.
 public: // Elementos publicos
   rational_t(const int = 0, const int = 1); //constructor
   ~rational_t() {} //destructor
   
-  // pauta de estilo [71]: indentación a 2 espacios
+  // Spaces vs Tabs : se usan 2 espacios para identar.
   // getters
-  int get_num() const;
-  int get_den() const;
+  // los getters son métodos que retornan el atributo al que pertenecen
+  int get_num() const; // este método retorna el valor de num
+  int get_den() const; // este método retorna el valor del den
   
   // setters
-  void set_num(const int);
-  void set_den(const int);
+  // los setters son métodos cambian el valor del atributo al que pertenecen
+  void set_num(const int); // este método cambia el valor del atributo num
+  void set_den(const int); // este método cambia el valor del atributo den
 
-  double value(void) const; //metodo para obtener el valor rela de una fraccion
+  double value(void) const; //metodo para obtener el valor real de una fraccion
 
   // FASE II
   bool is_equal(const rational_t&, const double precision = EPSILON) const; //método para ver si es igual
@@ -54,6 +56,6 @@ public: // Elementos publicos
   void read(istream& = cin); //scritura a pantalla  // istream y cin llevan std::
   
 private: // Elementos privados 
-  // pauta de estilo [11]: nombre de los atributos seguido de "_"
+// Class Data Members: todas las variables privadas tiene que tener "_"
   int num_, den_; // atributos
 };

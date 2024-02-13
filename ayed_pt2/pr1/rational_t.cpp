@@ -1,6 +1,6 @@
-// AUTOR: 
-// FECHA: 
-// EMAIL: 
+// AUTOR: Margarita Blanca Escobar Alonso
+// FECHA: 08/02/2024
+// EMAIL: alu0101567211@ull.edu.es
 // VERSION: 1.0
 // ASIGNATURA: Algoritmos y Estructuras de Datos
 // PRÁCTICA Nº: 1
@@ -8,7 +8,7 @@
 //              "C++ Programming Style Guidelines"
 //              https://geosoft.no/development/cppstyle.html
 
-// pauta de estilo [92]: comentarios multilínea usando solo "//"
+// Comments style : ambos tipos de comentarios son validos, tanto "/* */" como "//".
 
 #include "rational_t.hpp"
 
@@ -18,9 +18,9 @@ rational_t::rational_t(const int n, const int d) //constructor que se asegura q 
   num_ = n, den_ = d;
 }
 
-// pauta de estilo [87]: 3 líneas de separación entre métodos
+// no existe en la guía de google
 
-// pauta de estilo [83]: tipo retornado en línea anterior al método
+// Type Return TYpe Sintax: el return aparece antes que el nombre de la función.
 int
 rational_t::get_num() const //getter con el que se obtiene el valor para el numerador
 {

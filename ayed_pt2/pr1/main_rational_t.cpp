@@ -1,6 +1,6 @@
-// AUTOR: 
-// FECHA: 
-// EMAIL: 
+// AUTOR: Margarita Blanca Escobar Alonso
+// FECHA: 08/02/2024
+// EMAIL: alu0101567211@ull.edu.es
 // VERSION: 1.0
 // ASIGNATURA: Algoritmos y Estructuras de Datos
 // PRÁCTICA Nº: 1
@@ -9,12 +9,12 @@
 //              https://geosoft.no/development/cppstyle.html
 // COMPILACIÓN: g++ -g rational_t.cpp main_rational_t.cpp -o main_rational_t
 
-// pauta de estilo [92]: comentarios multilínea usando solo "//"
+// Comments style : ambos tipos de comentarios son validos, tanto "/* */" como "//".
 
 #include <iostream>
 #include <cmath>
 
-// pauta de estilo [41]: ficheros de cabecera agrupados y separados
+// Include Files And Include Statements: Los includes tiene que estar ordenados y agrupados por tipos.
 #include "rational_t.hpp"
 
 using namespace std;
