@@ -51,6 +51,11 @@ public: // Elementos publicos
   rational_t substract(const rational_t&);
   rational_t multiply(const rational_t&);
   rational_t divide(const rational_t&);
+  //modificaciones
+  rational_t inversa(const rational_t&);
+  rational_t cuadrado(const rational_t&);
+  rational_t raiz(const rational_t&);
+  bool comprobar(const rational_t&);
   
   void write(ostream& = cout) const; //lectura desde teclado  //ostream y cout llevan std::
   void read(istream& = cin); //scritura a pantalla  // istream y cin llevan std::

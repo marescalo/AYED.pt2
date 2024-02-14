@@ -57,6 +57,48 @@ int main()
   
   cout << "a / b: ";
   a.divide(b).write();
+
+//MODIFICACION
+//inversa
+  cout << "inversa de a ";
+  a.inversa(a).write();
+
+  cout << "inversa de b ";
+  b.inversa(b).write();
+
+  cout << "inversa de c ";
+  c.inversa(c).write();
   
+//cuadrada
+  cout << "cuadrado de a ";
+  a.cuadrado(a).write();
+
+  cout << "cuadrado de b ";
+  b.cuadrado(b).write();
+
+  cout << "cuadrado de c ";
+  c.cuadrado(c).write();
+
+//raiz cuadrada
+  cout << "raiz de a ";
+  a.raiz(a).write();
+
+  cout << "raiz de b ";
+  b.raiz(b).write();
+
+  cout << "raiz de c ";
+  c.raiz(c).write();
+
+//comprobacion
+  cout << "comprobar si es entero" << endl;;
+  bool result = a.comprobar(a);
+
+  if(result == true){
+    cout << "TRUE" << endl;
+  }
+  else{
+    cout << "FALSE" << endl;
+  }
+
   return 0;
 }

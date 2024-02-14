@@ -129,7 +129,38 @@ rational_t::divide(const rational_t& r) // método que realiza la division entre
   return solve;
 }
 
+//MODIFICACIÓN
 
+rational_t
+rational_t::inversa(const rational_t& r){
+  rational_t solve(r.get_den(),r.get_num());
+  return solve;
+}
+
+rational_t
+rational_t::cuadrado(const rational_t& r){
+  rational_t solve(pow(r.get_num(),2),pow(r.get_den(),2));
+  return solve;
+}
+
+rational_t
+rational_t::raiz(const rational_t& r){
+  rational_t solve(r.get_num(),sqrt(r.get_den()));
+  return solve;
+}
+
+// modificacion comprobación
+bool rational_t::comprobar(const rational_t& r){
+  if (r.get_num() % r.get_den() == 0){
+    //std::cout<< "es entero" << endl;
+    return true;
+  }
+  else{
+    //std::cout<<"no es entero";
+    return false;
+  }
+  
+}
 
 // E/S
 void
