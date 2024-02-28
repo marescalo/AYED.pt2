@@ -57,7 +57,7 @@ int main()
   
   
   // FASE III
-  matrix_t<double> A, B, C;
+  matrix_t<double> A, B, C, D, E, F, G, H, I, J, K, M;
   A.read(), A.write();
   B.read(), B.write();
   
@@ -67,10 +67,9 @@ int main()
 
   //modificaciones
 
-  D.read(), D.write(); // Se leen y muestran por pantalla las matrices
-  E.read(), E.write(); 
+  D.read(), D.write(); // Se leen y muestran por pantalla las matrices 
   
-   F.sum_mat(D,E);
+   F.sum_mat(A,D);
    cout << "Suma de matrices D Y E: " << endl; // Se muestra por pantalla la suma de las matrices
    F.write();
 
@@ -99,6 +98,15 @@ int main()
    M.write();
   
    v.suma_vector(v);
+
+   A.sum_sub_trian_inf(A);
+   B.sum_sub_trian_sup(B);
+   A.max_min(A);
+   A.sum_diagon_prin(A);
+   B.sum_diagon_secun(B);
+   A.busc_num(A,0.00);
+   B.sum_elem_ind_imp(B);
+   A.sum_elem_ind_par(A);
 
   return 0;
 }

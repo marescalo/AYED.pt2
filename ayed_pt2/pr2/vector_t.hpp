@@ -43,15 +43,15 @@ public:
   void read(istream& = cin);
 
   // modificaciones
-
-  void suma_vector (const vector_t<T>&) const
+  
+  void suma_vector (const vector_t<T>&) const;
 
 private:
   T *v_; // vector de tipo T
   int sz_; // esto es un atributo que representa el tamaño del vector.
   
   void build(void); // crea el vector
-  void destroy(void); // destruye el vector creado por build.
+  void destroy(void); // destruye el vector creado por build. 
 };
 
 
@@ -233,5 +233,5 @@ void vector_t<T>::suma_vector (const vector_t<T>& v) const {
    vector_t suma_2a2 = (v[i-1] + v[i]);
    resultado = suma_2a2; 
   }
-  v.write();
+  v.write();
 }

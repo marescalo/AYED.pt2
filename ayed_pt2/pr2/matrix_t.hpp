@@ -52,6 +52,14 @@ public:
   void sub_triangular_inf(const matrix_t<T>&); //Método que calcula la submatriz triangular inferior de una matriz 
   void sub_triangular_sup(const matrix_t<T>&); //Método que calcula la submatriz triangular superior de una matriz
   void traspuesta(const matrix_t<T>&); //Método que calcula la matriz traspuesta de una matriz
+  void sum_sub_trian_inf(const matrix_t<T>& A);
+  void sum_sub_trian_sup(const matrix_t<T>& A);
+  void max_min (const matrix_t<T>& A);
+  void sum_diagon_prin(const matrix_t<T>& A);
+  void sum_diagon_secun(const matrix_t<T>& A);
+  void busc_num(const matrix_t<T>& A, double num);
+  void sum_elem_ind_par(const matrix_t<T>& A); //si la suma de i y j es par suma ese elemento
+  void sum_elem_ind_imp(const matrix_t<T>& A);
 
 private:
   int m_, n_; // m_ filas y n_ columnas
@@ -264,14 +272,14 @@ matrix_t<T>::sub_triangular_inf(const matrix_t<T>& G) // Calcula la supmatriz tr
 
 template<class T>
 void
-matrix_t<T>::sub_triangular_sup(const matrix_t<T>& G) // Calcula la submatriz triangular superior
+matrix_t<T>::sub_triangular_sup(const matrix_t<T>& A) // Calcula la submatriz triangular superior
 { 
-  assert(G.get_m() == G.get_n()); // Comprueba que la matriz es cuadrada
-  matrix_t K(G.get_m(), G.get_n()); // Crea una matriz de tamaño (filas de G, columnas de G)
-  resize (G.get_m(), G.get_n()); // Redimensiona la matriz
+  assert(A.get_m() == A.get_n()); // Comprueba que la matriz es cuadrada
+  matrix_t K(A.get_m(), A.get_n()); // Crea una matriz de tamaño (filas de G, columnas de G)
+  resize (A.get_m(), A.get_n()); // Redimensiona la matriz
   for (int i = 1; i <= get_m(); i++)
     for (int j = i; j <= get_m(); j++)
-      at(i,j) = G(i,j);
+      at(i,j) = A(i,j);
 }
 
 
@@ -284,4 +292,130 @@ matrix_t<T>::traspuesta(const matrix_t<T>& A) // Calcula la traspuesta de una ma
   for (int i = 1; i <= get_m(); ++i) // Recorre las filas de la matriz resultado
     for (int j = 1; j <= get_n(); ++j) // Recorre las columnas de la matriz resultado
       at(i, j) = A(j, i); // Guarda el resultado en la matriz resultado, de la posición (i, j) correspondiente
+}
+
+
+template <class T>
+void
+matrix_t<T>::sum_sub_trian_inf(const matrix_t<T>& A){
+
+ assert(A.get_m() == A.get_n()); // Comprueba que la matriz es cuadrada
+  double suma{0.00};
+  for (int i = 1; i <= get_m(); i++){
+    for (int j = 1; j <= i; j++){
+      suma += A(i,j);
+    }
+  }
+  std::cout << suma << std::endl;
+}
+
+
+template <class T>
+void
+matrix_t<T>::sum_sub_trian_sup (const matrix_t<T>& A){
+
+  assert(A.get_m() == A.get_n()); // Comprueba que la matriz es cuadrada
+  double suma{0.00};
+  for (int i = 1; i <= get_m(); i++){
+    for (int j = i; j <= get_m(); j++){
+      suma += A(i,j);
+    }
+  }
+  std::cout << suma << std::endl;
+}
+
+template <class T>
+void
+matrix_t<T>::max_min (const matrix_t<T>& A){
+   double max{0.00};
+   double min{};
+  for (int i = 1; i <= get_m(); i++){
+    for (int j = i; j <= get_m(); j++){
+      if(A(i,j) > max){
+        max = A(i,j);
+      }
+      else if(A(i,j) < min){
+        min = A(i,j);
+      }
+    }
+  }
+  std::cout << "el valor minimo es" << min << std::endl;
+  std::cout << "el valor maximo es" << max << std::endl;
+}
+
+template <class T>
+void
+matrix_t<T>::sum_diagon_prin(const matrix_t<T>& A){
+
+  assert(A.get_m() == A.get_n()); // Comprueba que la matriz es cuadrada
+  double suma{0.00};
+  for (int i = 1; i <= get_n(); i++){
+    suma += A(i,i);
+  }
+  std::cout << suma << std::endl;
+}
+
+template <class T>
+void
+matrix_t<T>::sum_diagon_secun(const matrix_t<T>& A){
+
+  assert(A.get_m() == A.get_n()); // Comprueba que la matriz es cuadrada
+  double suma{0.00};
+  for (int i = 1, j = get_m(); i <= get_m(); i++,j--){
+    suma += A(i,j);
+  }
+  std::cout << suma << std::endl;
+}
+
+template <class T>
+void
+matrix_t<T>::busc_num(const matrix_t<T>& A, double num){
+  int contador{0};
+  std::cout << "el numero se encuentra en la posicion:" << std::endl;
+  for(int i = 1; i < get_n(); i++){
+    for(int j=1; j < get_m(); j++){
+      std::cout << "el numero se encuentra en la posicion" << std::endl;
+      if(num == A(i,j)){
+        std::cout << A(i,j) << std::endl;
+        contador++;
+      }
+    }
+  }
+
+  if (contador == 0){
+    std::cout<< "el numero no se encuentra en la matriz" << std::endl; 
+  }
+  else{
+    std::cout << "el numero se encuentra " << contador << " veces en la matriz" << std::endl;
+  }
+}
+
+template <class T>
+void
+matrix_t<T>::sum_elem_ind_par(const matrix_t<T>& A){
+
+  double sum{0.00};
+  for(int i = 1; i < get_m(); i++){
+    for (int j = 1; j < get_n();j++){
+      if(((i+j)%2) ==0){
+        sum += A(i,j);
+      }
+    }
+  }
+  std::cout << sum << std::endl;
+}
+
+template<class T>
+void 
+matrix_t<T>::sum_elem_ind_imp(const matrix_t<T>& A){
+
+  double sum{0.00};
+  for(int i = 1; i < get_m(); i++){
+    for (int j = 1; j < get_n();j++){
+      if(((i%2)==0)&&((j%2)==0)){
+        sum += A(i,j);
+      }
+    }
+  }
+  std::cout << sum << std::endl;
 }
