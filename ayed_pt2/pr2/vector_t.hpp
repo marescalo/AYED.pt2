@@ -228,10 +228,9 @@ scal_prod(const vector_t<rational_t>& v, const vector_t<rational_t>& w)
 
 template <class T>
 void vector_t<T>::suma_vector (const vector_t<T>& v) const {
-  vector_t<T> resultado;
-  for (int i = 1; i <= v.get_size(); i++) {
-   vector_t suma_2a2 = (v[i-1] + v[i]);
-   resultado = suma_2a2; 
+  double resultado;
+  for (int i = 0; i < v.get_size(); i+=2) {
+   resultado += v[i]; 
   }
-  v.write();
+  std::cout << resultado << std::endl;
 }

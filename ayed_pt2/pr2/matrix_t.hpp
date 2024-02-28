@@ -395,12 +395,13 @@ void
 matrix_t<T>::sum_elem_ind_par(const matrix_t<T>& A){
 
   double sum{0.00};
-  for(int i = 1; i < A.get_m(); i++){
-    for (int j = 1; j < A.get_n();j++){
-      if(((i+j)%2) ==0){
-        sum += A(i,j);
-      } else {
-        sum += 0;
+  for(int i = 1; i <= A.get_m(); i++){
+    for (int j = 1; j <= A.get_n();j++){
+      if(((i+j)%2) == 0){
+        sum = sum + A(i,j);
+      } 
+      else {
+        sum = sum + 0;
       }
     }
   }
@@ -412,8 +413,8 @@ void
 matrix_t<T>::sum_elem_ind_imp(const matrix_t<T>& A){
 
   double sum{0.00};
-  for(int i = 1; i < get_m(); i++){
-    for (int j = 1; j < get_n();j++){
+  for(int i = 1; i <= get_m(); i++){
+    for (int j = 1; j <= get_n();j++){
       if(((i%2)!=0)&&((j%2)!=0)){
         sum += A(i,j);
       }

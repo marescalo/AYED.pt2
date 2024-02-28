@@ -67,7 +67,7 @@ int main()
 
   //modificaciones
 
-  /* D.read(), D.write();
+  D.read(), D.write();
   E.read(), E.write(); // Se leen y muestran por pantalla las matrices 
   
    F.sum_mat(E,D);
@@ -98,7 +98,10 @@ int main()
    cout << "Traspuesta de G: " << endl;
    M.write();
   
-   //v.suma_vector(v);
+
+   v.suma_vector(v);
+
+
    std::cout << "suma de la submatriz inferior: " << std::endl;
    D.sum_sub_trian_inf(D);
    std::cout << "suma de la submatriz superior: " << std::endl;
@@ -114,7 +117,7 @@ int main()
    std::cout << "suma de elementos de indice impar: " << std::endl;
    B.sum_elem_ind_imp(B);
    std::cout << "suma de elementos de indice par: " << std::endl;
-   A.sum_elem_ind_par(A); */
+   A.sum_elem_ind_par(A); 
 
   return 0;
 }
