@@ -1,6 +1,6 @@
-// AUTOR: 
-// FECHA: 
-// EMAIL: 
+// AUTOR: Margarita Blanca Escobar Alonso
+// FECHA: 28/02/2024
+// EMAIL: alu0101567211@ull.edu.es
 // VERSION: 1.0
 // ASIGNATURA: Algoritmos y Estructuras de Datos
 // PRÁCTICA Nº: 2
@@ -42,12 +42,16 @@ public:
   void write(ostream& = cout) const;
   void read(istream& = cin);
 
+  // modificaciones
+
+  void suma_vector (const vector_t<T>&) const
+
 private:
-  T *v_;
-  int sz_;
+  T *v_; // vector de tipo T
+  int sz_; // esto es un atributo que representa el tamaño del vector.
   
-  void build(void);
-  void destroy(void);
+  void build(void); // crea el vector
+  void destroy(void); // destruye el vector creado por build.
 };
 
 
@@ -217,4 +221,17 @@ scal_prod(const vector_t<rational_t>& v, const vector_t<rational_t>& w)
     sum = sum + (v[position]*w[position]).value();
   }
   return sum;
+}
+
+
+//modificaciones
+
+template <class T>
+void vector_t<T>::suma_vector (const vector_t<T>& v) const {
+  vector_t<T> resultado;
+  for (int i = 1; i <= v.get_size(); i++) {
+   vector_t suma_2a2 = (v[i-1] + v[i]);
+   resultado = suma_2a2; 
+  }
+  v.write();
 }

@@ -1,6 +1,6 @@
-// AUTOR: 
-// FECHA: 
-// EMAIL: 
+// AUTOR: Margarita Blanca Escobar Alonso
+// FECHA: 28/02/2024
+// EMAIL: alu0101567211@ull.edu.es
 // VERSION: 1.0
 // ASIGNATURA: Algoritmos y Estructuras de Datos
 // PRÁCTICA Nº: 2
@@ -21,28 +21,37 @@ template<class T>
 class matrix_t
 {
 public:
-  matrix_t(const int = 0, const int = 0);
-  ~matrix_t();
+  matrix_t(const int = 0, const int = 0); //constructos
+  ~matrix_t(); // destructor
   
-  void resize(const int, const int);
+  void resize(const int, const int); // elimina la matriz y la reonstrulle con unos valores distintos
   
   // getters
-  int get_m(void) const;
-  int get_n(void) const;
+  int get_m(void) const; //este método obtiene el valor de m
+  int get_n(void) const; // este método obtiene el valor de n
   
   // getters-setters
-  T& at(const int, const int);
-  T& operator()(const int, const int);
+  T& at(const int, const int); //actua como getter o como setter en función de lo que tenga el código escrito
+  T& operator()(const int, const int); // actua como el metodo at.
   
   // getters constantes
-  const T& at(const int, const int) const;
-  const T& operator()(const int, const int) const;
+  const T& at(const int, const int) const; //getter de una posición de una matriz
+  const T& operator()(const int, const int) const; // actua como el método at
   
   // operaciones y operadores
   void multiply(const matrix_t<T>&, const matrix_t<T>&);
 
-  void write(ostream& = cout) const;
-  void read(istream& = cin);
+  void write(ostream& = cout) const; // m_ filas y n_ columnas
+  void read(istream& = cin); // vector tipo T
+
+  //modificaciones
+  void sum_mat(const matrix_t<T>&, const matrix_t<T>&); //Método que suma dos matrices
+  void sub_mat(const matrix_t<T>&, const matrix_t<T>&); //Método que resta dos matrices
+  void diagonal_prin(const matrix_t<T>&); //Método que calcula la diagonal principal de una matriz
+  void diagonal_sec(const matrix_t<T>&); //Método que calcula la diagonal secundaria de una matriz
+  void sub_triangular_inf(const matrix_t<T>&); //Método que calcula la submatriz triangular inferior de una matriz 
+  void sub_triangular_sup(const matrix_t<T>&); //Método que calcula la submatriz triangular superior de una matriz
+  void traspuesta(const matrix_t<T>&); //Método que calcula la matriz traspuesta de una matriz
 
 private:
   int m_, n_; // m_ filas y n_ columnas
@@ -192,4 +201,87 @@ matrix_t<T>::multiply(const matrix_t<T>& A, const matrix_t<T>& B)
       }
     }
   }
+}
+
+// modificaciones
+template<class T>
+void
+matrix_t<T>::sum_mat(const matrix_t<T>& D, const matrix_t<T>& E) // Suma dos matrices
+{
+  assert (D.get_m()*D.get_n() == E.get_m()*E.get_n()); // Comprueba que las matrices tienen el mismo tamaño
+  matrix_t F(D.get_n(), D.get_m()); // Crea una matriz de tamaño (filas de D, columnas de D)
+  resize(D.get_n(), D.get_m()); // Redimensiona la matriz
+  for(int i = 1; i <= get_m(); i++)
+    for(int j = 1; j <= get_n(); j++)
+      at(i,j) = D(i,j) + E(i,j);
+}
+
+template<class T>
+void
+matrix_t<T>::sub_mat(const matrix_t<T>& D, const matrix_t<T>& E) // Resta dos matrices
+ {
+  assert (D.get_m()*D.get_n() == E.get_m()*E.get_n()); // Comprueba que las matrices tienen el mismo tamaño
+  matrix_t F(D.get_n(), D.get_m()); // Crea una matriz de tamaño (filas de D, columnas de D)
+  resize(D.get_n(), D.get_m()); // Redimensiona la matriz
+  for(int i = 1; i <= get_m(); i++) 
+    for(int j = 1; j <= get_n(); j++)
+      at(i,j) = D(i,j) - E(i,j);
+}
+
+template<class T>
+void
+matrix_t<T>::diagonal_prin(const matrix_t<T>& F) // Calcula la diagonal principal
+{
+  assert(F.get_m() == F.get_n()); // Comprueba que la matriz es cuadrada
+  matrix_t H(F.get_m(), F.get_n()); // Crea una matriz de tamaño (filas de F, columnas de F)
+  resize (F.get_m(), F.get_n()); // Redimensiona la matriz
+  for (int i = 1; i <= get_n(); i++)
+    at(i,i) = F(i,i);
+}
+
+template<class T>
+void
+matrix_t<T>::diagonal_sec(const matrix_t<T>& F) // Calcula la diagonal secundaria
+{
+  assert(F.get_m() == F.get_n()); // Comprueba que la matriz es cuadrada
+  matrix_t I(F.get_m(), F.get_n()); // Crea una matriz de tamaño (filas de F, columnas de F)
+  resize (F.get_m(), F.get_n()); // Redimensiona la matriz
+  for (int i = 1, j = get_m(); i <= get_m(); i++,j--)
+    at(i,j) = F(i,j);
+}
+
+template<class T>
+void
+matrix_t<T>::sub_triangular_inf(const matrix_t<T>& G) // Calcula la supmatriz triangular inferior
+{
+  assert(G.get_m() == G.get_n()); // Comprueba que la matriz es cuadrada
+  matrix_t J(G.get_m(), G.get_n()); // Crea una matriz de tamaño (filas de G, columnas de G)
+  resize (G.get_m(), G.get_n()); // Redimensiona la matriz
+  for (int i = 1; i <= get_m(); i++) 
+    for (int j = 1; j <= i; j++)
+      at(i,j) = G(i,j);
+}
+
+template<class T>
+void
+matrix_t<T>::sub_triangular_sup(const matrix_t<T>& G) // Calcula la submatriz triangular superior
+{ 
+  assert(G.get_m() == G.get_n()); // Comprueba que la matriz es cuadrada
+  matrix_t K(G.get_m(), G.get_n()); // Crea una matriz de tamaño (filas de G, columnas de G)
+  resize (G.get_m(), G.get_n()); // Redimensiona la matriz
+  for (int i = 1; i <= get_m(); i++)
+    for (int j = i; j <= get_m(); j++)
+      at(i,j) = G(i,j);
+}
+
+
+// Trasponer la matriz
+template<class T>
+void
+matrix_t<T>::traspuesta(const matrix_t<T>& A) // Calcula la traspuesta de una matriz
+{
+  resize(A.get_n(), A.get_m()); // Redimensiona la matriz
+  for (int i = 1; i <= get_m(); ++i) // Recorre las filas de la matriz resultado
+    for (int j = 1; j <= get_n(); ++j) // Recorre las columnas de la matriz resultado
+      at(i, j) = A(j, i); // Guarda el resultado en la matriz resultado, de la posición (i, j) correspondiente
 }
