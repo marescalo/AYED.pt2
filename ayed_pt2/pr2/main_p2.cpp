@@ -67,9 +67,10 @@ int main()
 
   //modificaciones
 
-  D.read(), D.write(); // Se leen y muestran por pantalla las matrices 
+  /* D.read(), D.write();
+  E.read(), E.write(); // Se leen y muestran por pantalla las matrices 
   
-   F.sum_mat(A,D);
+   F.sum_mat(E,D);
    cout << "Suma de matrices D Y E: " << endl; // Se muestra por pantalla la suma de las matrices
    F.write();
 
@@ -97,16 +98,23 @@ int main()
    cout << "Traspuesta de G: " << endl;
    M.write();
   
-   v.suma_vector(v);
-
-   A.sum_sub_trian_inf(A);
-   B.sum_sub_trian_sup(B);
+   //v.suma_vector(v);
+   std::cout << "suma de la submatriz inferior: " << std::endl;
+   D.sum_sub_trian_inf(D);
+   std::cout << "suma de la submatriz superior: " << std::endl;
+   E.sum_sub_trian_sup(E);
+   std::cout << " numero maximo y numero minimo: " << std::endl;
    A.max_min(A);
-   A.sum_diagon_prin(A);
-   B.sum_diagon_secun(B);
+   std::cout << "suma de la diagonal `principal: " << std::endl;
+   E.sum_diagon_prin(E);
+   std::cout << "suma de la diagonal segundaria: " << std::endl;
+   D.sum_diagon_secun(D);
+   std::cout << "buscar l numero: " << std::endl;
    A.busc_num(A,0.00);
+   std::cout << "suma de elementos de indice impar: " << std::endl;
    B.sum_elem_ind_imp(B);
-   A.sum_elem_ind_par(A);
+   std::cout << "suma de elementos de indice par: " << std::endl;
+   A.sum_elem_ind_par(A); */
 
   return 0;
 }
