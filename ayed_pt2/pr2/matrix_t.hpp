@@ -60,6 +60,7 @@ public:
   void busc_num(const matrix_t<T>& A, double num);
   void sum_elem_ind_par(const matrix_t<T>& A); //si la suma de i y j es par suma ese elemento
   void sum_elem_ind_imp(const matrix_t<T>& A);
+  void sum_per(const matrix_t<T>& A);
 
 private:
   int m_, n_; // m_ filas y n_ columnas
@@ -421,4 +422,32 @@ matrix_t<T>::sum_elem_ind_imp(const matrix_t<T>& A){
     }
   }
   std::cout << sum << std::endl;
+}
+
+template<class T>
+void 
+matrix_t<T>::sum_per(const matrix_t<T>& A){
+
+  double sum{0.00};
+  for(int i = 1; i <= A.get_m(); i++){
+    for (int j = 1; j <= A.get_n(); j++){
+      if((i == 1)||(i == A.get_m())){
+        sum += A(i,j);
+      }
+      else {
+        sum += 0;
+      }
+    }
+  }
+  for (int i = 2 ; i <= (A.get_m()-1) ; i++){
+    for (int j = 1; j <= A.get_n(); j++){
+      if((j == 1)||(j == A.get_n())){
+        sum += A(i,j);
+      }
+      else{
+        sum += 0;
+      }
+    }
+  }
+  std::cout << "la suma del perimetro es " << sum << std::endl;
 }

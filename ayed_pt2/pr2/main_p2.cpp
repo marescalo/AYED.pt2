@@ -43,9 +43,10 @@ int main()
   cout << endl;
   
   // FASE II
-  vector_t<double> v, w;
+  vector_t<double> v, w, z;
   v.read(), v.write();
   w.read(), w.write();
+  z.read(), z.write();
   
   cout << "Producto escalar de vector_t<double>: " << scal_prod(v, w) << endl << endl;
   
@@ -67,6 +68,7 @@ int main()
 
   //modificaciones
 
+/*
   D.read(), D.write();
   E.read(), E.write(); // Se leen y muestran por pantalla las matrices 
   
@@ -118,6 +120,11 @@ int main()
    B.sum_elem_ind_imp(B);
    std::cout << "suma de elementos de indice par: " << std::endl;
    A.sum_elem_ind_par(A); 
+   std::cout << "suma de perimetro: " << std::endl;
+   D.sum_per(D);
+*/
+
+v.sum_dos_elem(v);
 
   return 0;
 }

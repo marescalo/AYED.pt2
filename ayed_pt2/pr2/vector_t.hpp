@@ -45,6 +45,8 @@ public:
   // modificaciones
   
   void suma_vector (const vector_t<T>&) const;
+  void sum_dos_elem(const vector_t <T>& v) const;
+
 
 private:
   T *v_; // vector de tipo T
@@ -233,4 +235,17 @@ void vector_t<T>::suma_vector (const vector_t<T>& v) const {
    resultado += v[i]; 
   }
   std::cout << resultado << std::endl;
+}
+
+
+template <class T>
+void vector_t<T>::sum_dos_elem(const vector_t<T>& v) const {
+  vector_t<T> result;
+  for (int i{1}; i <= v.get_size(); i++){
+    vector_t sum = v[i-1]+v[i];
+    result = sum;
+    //std::cout << result <<std::endl;
+    result.write();
+  }
+  std::cout << std::endl;
 }
