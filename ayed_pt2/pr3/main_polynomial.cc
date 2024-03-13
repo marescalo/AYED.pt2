@@ -91,5 +91,24 @@ int main()
   cout << "sp3 == p2? " << (sp3.IsEqual(p2) ? "true" : "false") << endl;
   cout << endl;
 
+//modificaciones
+
+// muestra los numeros mayores q n
+int n{5};
+//a partir de n posicion
+sp2.morethan(n);
+
+//posiciones pares
+sp2.pair(2);
+
+//posiciones impares
+sp2.impar(2);
+
+//monomio
+std::cout << "modificación" << std::endl;
+sp1.monomio(n);
+sp2.monomio(n);
+sp3.monomio(n);
+
   return 0;
 }

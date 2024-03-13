@@ -55,6 +55,10 @@ class SparsePolynomial : public sparse_vector_t {
   double Eval(const double) const;
   bool IsEqual(const SparsePolynomial&, const double = EPS) const;
   bool IsEqual(const Polynomial&, const double = EPS) const;
+  void morethan(const int n) const;
+  void pair (const int n) const;
+  void impar(const int) const;
+  void monomio(const int n) const;
 };
 
 // E/S
@@ -82,15 +86,25 @@ std::ostream& operator<<(std::ostream& os, const Polynomial& p) {
 // Evaluación de un polinomio representado por vector denso
 double Polynomial::Eval(const double x) const {
   double result{0.0};
-  // poner el código aquí
+  for(int i{0}; i < get_size();i++ ){
+    if(IsNotZero(at(i))){
+      result += pow(x,i) * get_val(i);
+    }
+  }
   return result;
 }
 
 // Comparación si son iguales dos polinomios representados por vectores densos
 bool Polynomial::IsEqual(const Polynomial& pol, const double eps) const {
   bool differents = false;
-  // poner el código aquí
-  return !differents;
+    for (int i{0}; i < get_size(); i++){
+      if(IsNotZero(at(i))){
+        if(fabs(get_val(i) - pol.get_val(i))>eps){
+          return differents;
+        }
+      }
+    }
+    return !differents; 
 }
 
 // constructor de copia
@@ -123,7 +137,9 @@ std::ostream& operator<<(std::ostream& os, const SparsePolynomial& p) {
 // Evaluación de un polinomio representado por vector disperso
 double SparsePolynomial::Eval(const double x) const {
   double result{0.0};
-  // poner el código aquí
+    for (int i{0}; i < get_nz(); i++){
+    result += at(i).get_val()*pow(x,at(i).get_inx());
+    }
   return result;
 }
 
@@ -131,16 +147,81 @@ double SparsePolynomial::Eval(const double x) const {
 bool SparsePolynomial::IsEqual(const SparsePolynomial& spol
 			       , const double eps) const {
   bool differents = false;
-  // poner el código aquí
-  return !differents;
+  if(get_nz() == spol.get_nz()){
+    for(int i{0}; i < get_nz(); i++){
+      if((at(i).get_inx() != spol.at(i).get_inx()) || (at(i).get_val() != spol.at(i).get_val())){
+        return differents;
+      }
+    }
+    return !differents;
+  }
+  return differents;
 }
 
 // Comparación si son iguales dos polinomios representados por
 // vector disperso y vector denso
 bool SparsePolynomial::IsEqual(const Polynomial& pol, const double eps) const {
   bool differents = false;
-  // poner el código aquí
+  int number{0};
+    for(int i{0}; i < get_nz(); i++){
+      if(IsNotZero(pol[i])){
+        if((i != at(number).get_inx())|| (pol.at(i) != at(number).get_val())){
+          return differents;
+        }
+        number ++;
+      }
+    }
   return !differents;
+}
+
+//modificaciones
+
+//mostrar los eleento a partir de la n posisicon
+
+void SparsePolynomial::morethan(const int n) const {
+  std::cout << "[";
+  for(int i{n}; i < get_nz(); i++){
+      std::cout << at(i) << ",";
+    }
+  std::cout << "]" << std::endl; 
+}
+
+//muestras los valores que esten en posiciones pares
+
+void SparsePolynomial::pair(const int ) const {
+
+std::cout << "[";
+for(int i{0}; i < get_nz(); i++){
+  if ( (at(i).get_inx() % 2) == 0)
+    std::cout << at(i) << "," ;
+}
+std::cout << "]" << std::endl;
+}
+
+//muestra los valores que esten en posiciones impares
+
+void SparsePolynomial::impar(const int ) const {
+
+std::cout << "[";
+for(int i{0}; i < get_nz(); i++){
+  if ( (at(i).get_inx() % 2) != 0)
+    std::cout << at(i) << "," ;
+}
+std::cout << "]" << std::endl;
+}
+
+// imprimir el coeficiente que corresoponda con el monomio introducido
+void SparsePolynomial::monomio(const int n) const {
+
+std::cout << "[";
+for(int i{0}; i < get_nz(); i++){
+  if (at(i).get_inx() == n)
+    std::cout << at(i) << "," ;
+  else if (at(i).get_inx() != n)
+    std::cout << "no,";
+}
+std::cout << "]" << std::endl;
+
 }
 
 
