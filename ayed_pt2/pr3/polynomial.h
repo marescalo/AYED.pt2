@@ -59,6 +59,8 @@ class SparsePolynomial : public sparse_vector_t {
   void pair (const int n) const;
   void impar(const int) const;
   void monomio(const int n) const;
+  void mayormenormon() const;
+  void coefgradoi(const int n) const;
 };
 
 // E/S
@@ -224,5 +226,30 @@ std::cout << "]" << std::endl;
 
 }
 
+void SparsePolynomial::mayormenormon() const {
+  int mayor = at(0).get_inx();
+  for(int i{0} ; i < get_nz();i++){
+    if(at(i).get_inx() > mayor){
+      mayor = i;
+    }
+  }
+
+  int menor = mayor;
+  for(int i{0}; i < get_nz() ; i++){
+    if(at(i).get_inx() < menor){
+      menor = i;
+    }
+  }
+  std::cout << "menor monomio" << at(menor) << std::endl;
+  std::cout << "mayor monomio" << at(mayor) << std::endl; 
+}
+
+void SparsePolynomial::coefgradoi(const int n) const {
+  for(int i{0}; i < get_nz(); i++){
+    if (at(i).get_inx() == n){
+        std::cout << at(i) << std::endl;
+    }
+  }
+}
 
 #endif  // POLYNOMIAL_H_

@@ -92,9 +92,9 @@ int main()
   cout << endl;
 
 //modificaciones
-
+/*
 // muestra los numeros mayores q n
-int n{5};
+
 //a partir de n posicion
 sp2.morethan(n);
 
@@ -105,10 +105,20 @@ sp2.pair(2);
 sp2.impar(2);
 
 //monomio
-std::cout << "modificación" << std::endl;
 sp1.monomio(n);
 sp2.monomio(n);
 sp3.monomio(n);
+
+//mayor y menor monomio
+sp1.mayormenormon();
+*/
+
+std::cout << "modificación clase" << std::endl;
+int n{5};
+
+sp1.coefgradoi(n);
+sp2.coefgradoi(n);
+sp3.coefgradoi(n);
 
   return 0;
 }
